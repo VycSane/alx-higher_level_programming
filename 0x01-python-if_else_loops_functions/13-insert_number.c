@@ -29,13 +29,13 @@ listint_t *insert_node(listint_t **head, int number)
 		{
 			new_node->next = NULL;
 			tmp->next = new_node;
-			return (*head);
+			break;
 		}
 		if (tmp->n <= number && tmp->next->n > number)
 		{
 			new_node->next = tmp->next;
 			tmp->next = new_node;
-			return (*head);
+			break;
 		}
 		tmp = tmp->next;
 	}
