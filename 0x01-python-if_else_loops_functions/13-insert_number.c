@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * insert_node - inserts a number in a sorted linked list
@@ -10,23 +9,39 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *tmp = *head;
+	listint_t *new_node = NULL;
+	listint_t *curr_ptr = NULL;
+	listint_t *next_ptr = NULL;
+
 	if (head == NULL || *head == NULL)
 		return (NULL);
 
 	if (number <= (*head)->n)
 		return (add_nodeint_start(head, &number));
 
-	while (tmp != NULL)
+	new_node = malloc(sizeof(listint_t *));
+	if (new_node == NULL)
+		return (NULL);
+	curr_ptr = *head;
+	while (curr_ptr != NULL)
 	{
-		if (tmp->n <= number && tmp->next == NULL)
-			tmp = tmp->next;
+		next_ptr = curr_ptr->next;
+		if (curr_ptr->n <= number && next_ptr == NULL)
+			return (add_nodeint_end(head, number));
+		if (curr_ptr->n <= number && next_ptr->n > number)
+		{
+			new_node->n = number;
+			new_node->next = next_ptr->next;
+			curr_ptr->next = new_node;
+			return (*head);
+		}
+		curr_ptr = next_ptr;
 	}
 	return (NULL);
 }
 
 /**
- * add_node_at_start - adds a node to the start of a linked list
+ * add_nodeint_start - adds a node to the start of a linked list
  * @head: a pointer to the root of the linked list
  * @number: the data (number) to add to the linked list
  * Return: the linked list
