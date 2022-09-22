@@ -5,8 +5,8 @@ from os import sys
 def main() -> int:
     argv = sys.argv
     arg_len = len(argv) - 1
-    print("{} arguments{}".format(arg_len,
-          ":" if arg_len > 0 else "."))
+    print("{} argument{}{}".format(arg_len,
+          "" if arg_len == 1 else "s", ":" if arg_len > 0 else "."))
     if arg_len > 0:
         i = 1
         for arg in argv[1:]:
