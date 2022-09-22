@@ -22,6 +22,7 @@ def main() -> int:
         print("{} / {} = {}".format(a, b, div(a, b)))
     else:
         print("Unknown operator. Available operators: +, -, * and /")
+        sys.exit(1)
     return 0
 
 
