@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 from os import sys
-import hidden_4
+from importlib import import_module
 
 
 def main() -> int:
-    names = dir("hidden_4")
+    names = dir(import_module("hidden_4"))
     names.sort()
     for name in names:
         if name[:2] != '__':
