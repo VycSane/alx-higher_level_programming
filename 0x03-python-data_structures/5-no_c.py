@@ -6,4 +6,4 @@ def no_c(my_string):
         if char.lower() == 'c':
             new_str = new_str[:i] + new_str[i+1:]
         i += 1
-    return my_string
+    return new_str
