@@ -9,11 +9,9 @@ int is_palindrome(listint_t **head)
 {
 	int ptr1_curr_pos = 1, midpoint;
 	int ptr2_end_pos = 0, ptr2_curr_pos = 1;
-	listint_t *ptr1 = malloc(sizeof(listint_t *));
-	listint_t *ptr2 = malloc(sizeof(listint_t *));
+	listint_t *ptr1 = *head;
+	listint_t *ptr2 = *head;
 
-	ptr1 = *head;
-	ptr2 = *head;
 	if (head == NULL)
 		return (1);
 
@@ -38,7 +36,5 @@ int is_palindrome(listint_t **head)
 		ptr1_curr_pos++;
 		ptr1 = ptr1->next;
 	}
-	free(ptr1);
-	free(ptr2);
 	return (1);
 }
