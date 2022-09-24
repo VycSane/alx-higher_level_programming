@@ -38,5 +38,7 @@ int is_palindrome(listint_t **head)
 		ptr1_curr_pos++;
 		ptr1 = ptr1->next;
 	}
+	free(ptr1);
+	free(ptr2);
 	return (1);
 }
