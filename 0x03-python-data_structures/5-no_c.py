@@ -5,5 +5,6 @@ def no_c(my_string):
     for char in new_str:
         if char.lower() == 'c':
             new_str = new_str[:i] + new_str[i+1:]
+            continue
         i += 1
     return new_str
