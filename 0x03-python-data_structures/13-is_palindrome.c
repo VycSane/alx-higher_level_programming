@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * is_palindrome - checks if a linked list is a palindrome
@@ -7,34 +8,38 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int ptr1_curr_pos = 1, midpoint;
-	int ptr2_end_pos = 0, ptr2_curr_pos = 1;
-	listint_t *ptr1 = *head;
-	listint_t *ptr2 = *head;
+	size_t list_length = 0, i = 0;
+	listint_t *tmp = *head;
+	int *num_stack;
 
 	if (head == NULL)
 		return (1);
 
-	while (ptr1 != NULL)
+	while (tmp != NULL)
 	{
-		ptr1 = ptr1->next;
-		ptr2_end_pos++;
+		tmp = tmp->next;
+		list_length++;
 	}
-	ptr1 = *head;
-	midpoint = ptr2_end_pos / 2;
-	while (ptr1 != NULL && ptr1_curr_pos <= midpoint)
+	tmp = *head;
+	num_stack = malloc(sizeof(int) * list_length);
+	if (num_stack == NULL)
+		exit(EXIT_FAILURE);
+	while (tmp != NULL)
 	{
-		while (ptr2 != NULL && ptr2_curr_pos <= ptr2_end_pos)
-		{
-			if (ptr2_curr_pos == ptr2_end_pos && ptr1->n != ptr2->n)
-				return (0);
-			ptr2 = ptr2->next;
-			ptr2_curr_pos++;
-		}
-		ptr2_curr_pos = 1, ptr2_end_pos--;
-		ptr2 = *head;
-		ptr1_curr_pos++;
-		ptr1 = ptr1->next;
+		num_stack[i] = tmp->n;
+		if (tmp->next == NULL)
+			break;
+		tmp = tmp->next;
+		i++;
 	}
+	tmp = *head;
+	while (tmp != NULL)
+	{
+		if (tmp->n != num_stack[i])
+			return (0);
+		tmp = tmp->next;
+		i--;
+	}
+	free(num_stack);
 	return (1);
 }
