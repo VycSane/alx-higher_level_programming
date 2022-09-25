@@ -9,7 +9,7 @@
 void print_python_list_info(PyObject *p)
 {
 	Py_ssize_t list_len, i = 0, allocated;
-	static j;
+	static int j;
 
 	list_len = PyList_Size(p);
 	allocated = list_len;
