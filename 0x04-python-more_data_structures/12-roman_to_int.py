@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    strg = roman_string
-    ln = len(strg) if strg is not None else 0
-    if strg is None or type(strg) != str or ln == 0:
+    if roman_string is None or type(roman_string) != str:
         return 0
-    strg = strg.upper()
+    if len(roman_string) == 0:
+        return None
     rd = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-    tmp = list(map(lambda x: x, strg))
+    tmp = list(map(lambda x: x, roman_string))
     stack = []
     res = 0
     while len(tmp) > 0:
