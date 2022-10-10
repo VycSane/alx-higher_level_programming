@@ -3,7 +3,7 @@ def safe_print_list(my_list=[], x=0):
     i = 0
     while i < x:
         try:
-            print("{:d}".format(my_list[x]), end='')
+            print(my_list[x]), end='')
             i += 1
         except (IndexError, TypeError):
             break
